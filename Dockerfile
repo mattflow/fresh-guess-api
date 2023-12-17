@@ -21,4 +21,7 @@ RUN npm ci
 
 COPY --from=builder /app/dist ./dist
 
+ENV PORT 80
+EXPOSE 80
+
 CMD ["npm", "run", "start:prod"]
