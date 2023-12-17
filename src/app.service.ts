@@ -21,7 +21,7 @@ export class AppService {
     this.logger.log("Launching headless browser");
     const browser = await puppeteer.launch({
       headless: "new",
-      args: ["--no-sandbox"],
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     this.logger.log("Browser launched");
 
