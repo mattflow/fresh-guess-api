@@ -1,4 +1,5 @@
 ARG puppeteer_version=21
+ARG port=80
 
 FROM --platform=linux/amd64 ghcr.io/puppeteer/puppeteer:${puppeteer_version} as builder
 
@@ -21,7 +22,7 @@ RUN npm ci
 
 COPY --from=builder /app/dist ./dist
 
-ENV PORT 80
-EXPOSE 80
+ENV PORT ${port}
+EXPOSE ${port}
 
 CMD ["npm", "run", "start:prod"]
